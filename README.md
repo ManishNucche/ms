@@ -67,3 +67,31 @@ JOIN invoice i ON c.customer_id = i.customer_id
 GROUP BY c.country
 ORDER BY total_revenue DESC
 LIMIT 5;
+
+---
+
+SELECT g.name, COUNT(*) AS track_count
+FROM genre g
+JOIN track t ON g.genre_id = t.genre_id
+JOIN invoice_line il ON t.track_id = il.track_id
+GROUP BY g.name
+ORDER BY track_count DESC;
+
+---
+
+SELECT c.customer_id, c.first_name, c.last_name,
+       SUM(i.total) AS total_spent
+FROM customer c
+JOIN invoice i ON c.customer_id = i.customer_id
+GROUP BY c.customer_id
+ORDER BY total_spent DESC;
+
+---
+
+👨‍💻 Author
+
+Manish Nucche
+Aspiring Data Analyst
+GitHub: https://github.com/ManishNucche
+
+LinkedIn: https://www.linkedin.com/in/manishnucche/
